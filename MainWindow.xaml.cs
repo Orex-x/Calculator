@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -36,26 +38,30 @@ namespace Cal
         private void Button_Del_Char(object sender, RoutedEventArgs e)
         {
             try { primer = primer.Remove(primer.Length - 1, 1); } catch (Exception) { }
-            label.Content = primer;
+            label10.Text = primer;
         }
         private void Button_Click_FullClear(object sender, RoutedEventArgs e)
         {
             primer = "";
-            label.Content = primer;
+            label10.Text = primer;
         }
         //Нажата кнопка 
         private void Butt_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
             primer += b.Content;
-            label.Content = primer;
+            label10.Text = primer;
 
         }
         private void Button_Click_StartOperation(object sender, RoutedEventArgs e)
         {
             primer = Reshenie(primer);
-            label.Content = primer;
+            label10.Text = primer;
         }
+
+
+
+
         private string getEl(string str, int i)
         {
             string el = "", elt = "";
@@ -111,10 +117,11 @@ namespace Cal
                         string el = getEl(primer, i);
                         i = i + el.Length - 1;
                         if (arrayNum.Any(str2 => str2 == el[0].ToString()))
-                            if (checkZ(el))
-                                stackNum.Push(el);
-                            else
-                                stackNum.Push(getDes(el));
+                            stackNum.Push(el);
+                        /*if (checkZ(el))
+                            stackNum.Push(el);
+                        else
+                            stackNum.Push(getDes(el));*/
                         else
                         {
                             if (el.Length >= 3 && arrayTrigon.Any(str2 => str2 == el.Substring(0, 3)))
@@ -208,37 +215,57 @@ namespace Cal
         }
         private double mathAction(double x, string op)
         {
-            switch (op)
+            try
             {
-                case "cos":
-                    return Math.Cos(x);
-                    break;
-                case "sin":
-                    return Math.Sin(x);
-                    break;
-                case "tg(":
-                    return Math.Tan(x);
-                    break;
-                case "ctg":
-                    return 1 / Math.Tan(x);
-                    break;
-                case "!":
-                    return Factorial(x);
-                    break;
-                case "ln(":
-                    return Math.Log(x);
-                    break;
-                case "log":
-                    return Math.Log10(x);
-                    break;
+                switch (op)
+                {
+                    case "cos":
+                        return Math.Cos(x);
+                        break;
+                    case "sin":
+                        return Math.Sin(x);
+                        break;
+                    case "tg(":
+                        return Math.Tan(x);
+                        break;
+                    case "ctg":
+                        return 1 / Math.Tan(x);
+                        break;
+                    case "!":
+                        int fuck = Convert.ToInt32(x);
+                        return Factorial(fuck);
+                        break;
+                    case "ln(":
+                        return Math.Log(x);
+                        break;
+                    case "log":
+                        return Math.Log10(x);
+                        break;
+                }
             }
+            catch (Exception ee) { }
+            
             return 0;
         }
+
         static double Factorial(double x)
         {
-            return (x == 0) ? 1 : x * Factorial(x - 1);
+            if(x < 10000000)
+            {
+                double sum = 1;
+                for (int i = 1; i <= x; i++)
+                    sum *= i;
+                return sum;
+            }
+            else
+            {
+                Random r = new Random();
+                
+                return r.Next(100, 1000) ^ r.Next(100, 1000);
+            }
         }
-        //боковая лапочка
+
+       /* 
         private void ShowCloseMenu(object sender, RoutedEventArgs e)
         {
             DoubleAnimation animation = new DoubleAnimation();
@@ -250,54 +277,77 @@ namespace Cal
             animation.AccelerationRatio = 1;
             animation.Duration = TimeSpan.FromSeconds(0.1);
             sp.BeginAnimation(StackPanel.WidthProperty, animation);
-        }
+        }*/
         //Показать или не показать окошки
         private void ShowJustCal(object sender, RoutedEventArgs e)
         {
+
+            label2.Visibility = Visibility.Hidden;
+            label8.Visibility = Visibility.Hidden;
+            label10.Height = 120;
+            label16.Visibility = Visibility.Hidden;
+            GridInfo.Width = 0;
+
 
             IngeneerMathOp.Visibility = Visibility.Collapsed;
             ProgrammerMathOp.Visibility = Visibility.Collapsed;
             ProgramerTools.Visibility = Visibility.Collapsed;
             MathTools.Visibility = Visibility.Visible;
             titleCal.Content = "Обычный";
-            ShowCloseMenu(null, null);
+           // ShowCloseMenu(null, null);
         }
         private void ShowIngCal(object sender, RoutedEventArgs e)
         {
+
+            label2.Visibility = Visibility.Hidden;
+            label8.Visibility = Visibility.Hidden;
+            label10.Height = 120;
+            label16.Visibility = Visibility.Hidden;
+            GridInfo.Width = 0;
+
+
 
             IngeneerMathOp.Visibility = Visibility.Visible;
             ProgrammerMathOp.Visibility = Visibility.Collapsed;
             ProgramerTools.Visibility = Visibility.Collapsed;
             MathTools.Visibility = Visibility.Visible;
             titleCal.Content = "Инженерный";
-            ShowCloseMenu(null, null);
+           // ShowCloseMenu(null, null);
         }
         private void ShowProgCal(object sender, RoutedEventArgs e)
         {
+            label2.Visibility = Visibility.Visible;
+            label8.Visibility = Visibility.Visible;
+            label10.Height = 30;
+            label16.Visibility = Visibility.Visible;
+            GridInfo.Width = 30;
+
+
+
 
             IngeneerMathOp.Visibility = Visibility.Collapsed;
             ProgrammerMathOp.Visibility = Visibility.Visible;
             ProgramerTools.Visibility = Visibility.Visible;
             MathTools.Visibility = Visibility.Collapsed;
             titleCal.Content = "Програмист";
-            ShowCloseMenu(null, null);
+           // ShowCloseMenu(null, null);
         }
         private void Butt_Modul_Click(object sender, RoutedEventArgs e)
         {
             primer = Reshenie(primer);
             if (primer.Length > 0 && primer[0] == '-') primer = primer.Remove(0, 1);
-            label.Content = primer;
+            label10.Text = primer;
         }
         private void _q_Click(object sender, RoutedEventArgs e)
         {
             if (primer.Length > 0 && primer[0] == '-') primer = primer.Remove(0, 1); else primer = "-" + primer;
-            label.Content = primer;
+            label10.Text = primer;
         }
         private void _z_Click(object sender, RoutedEventArgs e)
         {
             if (!checkZ(primer))
-                if (primer.Length > 0) primer += ",";else primer = "0,";
-            label.Content = primer;
+                if (primer.Length > 0) primer += ","; else primer = "0,";
+            label10.Text = primer;
         }
         private bool checkZ(string str)
         {
@@ -309,7 +359,7 @@ namespace Cal
         private void _Programer_Button_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
-            label.Content = Convert.ToString(Convert.ToInt32(Reshenie(primer)), Convert.ToInt32(b.Content));
+            label10.Text = Convert.ToString(Convert.ToInt32(Reshenie(primer)), Convert.ToInt32(b.Content));
         }
         private string getDes(string shestnadzat)
         {
@@ -318,5 +368,39 @@ namespace Cal
                 itog += (Convert.ToInt32(arrayNumAbc[shestnadzat[i].ToString()]) * Math.Pow(16, pow));
             return itog.ToString();
         }
+
+        private void label10_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            switch (tb.Name)
+            {
+                case "label10":
+                    {
+                        int i = Convert.ToInt32(tb.Text);
+                        label2.Text = Convert.ToString(i, 2);
+                        label8.Text = Convert.ToString(i, 8);
+                        label10.Text = Convert.ToString(i, 10);
+                        label16.Text = Convert.ToString(i, 16);
+                    }
+                    break;
+                case "label2":
+                    {
+
+                        break;
+                    }
+                case "label8":
+                    {
+
+                        break;
+                    }
+                case "label16":
+                    {
+
+                        break;
+                    }
+            }
+        }
+
+          
     }
 }

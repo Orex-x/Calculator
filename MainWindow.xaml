@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Cal"
         mc:Ignorable="d"
         WindowStyle="None"
-        ResizeMode="NoResize"
-        Title="MainWindow" Height="545" Width="405" Icon="Без имени-1.png">
+        
+        Title="MainWindow" Height="550" Width="410" Icon="Без имени-1.png">
     <Grid Background="#FF0B0B0B">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -15,81 +15,295 @@
             <RowDefinition Height="120"/>
             <RowDefinition Height="50"/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+
+
+        <Grid Width="210" HorizontalAlignment="Left" Grid.Row="1">
+            <StackPanel x:Name="sp"  HorizontalAlignment="Left" 
+                        Width="0"  Background="#FF151515" Grid.Row="1">
+                
+               
+            
+            </StackPanel>
+        </Grid>
+
+
         <Grid Background="#FF171717" 
               Grid.ColumnSpan="5"
               MouseDown="Grid_Mouse">
-            <Button Content="✖" HorizontalAlignment="Left" Margin="380,0,0,0" VerticalAlignment="Top" Width="25" Height="25" Foreground="#FFFB5C5C" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click"/>
+            <Button Content="✖" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Width="25" Height="25" 
+                    Foreground="#FFFB5C5C" 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}" Click="Button_Click"/>
         </Grid>
-        <Label x:Name="label" Content="0" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="380" Height="100" Grid.ColumnSpan="3" Foreground="White" Background="#FF171717" HorizontalContentAlignment="Right" FontSize="36" VerticalContentAlignment="Bottom" HorizontalAlignment="Left"/>
-        <Button x:Name="_r" Content="=" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Top" Width="150" Height="45" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Button_Click_StartOperation" Margin="0,26,0,0"/>
-        <WrapPanel x:Name="MathTools" HorizontalAlignment="Left" Height="50" Grid.Row="3" VerticalAlignment="Top" Width="250" Visibility="Visible">
-            <Button x:Name="_e" Content="e"   Margin="5,10,0,0"  Width="70" Height="30" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
-            <Button x:Name="_pi" Content="π"  Margin="0,10,0,0"   Width="70" Height="30" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
-            <Button x:Name="_fack" Content="!"  Margin="0,10,0,0"  Width="70" Height="30" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-        </WrapPanel>
-        <WrapPanel x:Name="ProgramerTools" HorizontalAlignment="Left" Height="50" Grid.Row="3" VerticalAlignment="Top" Width="250" Visibility="Collapsed">
-            <Button x:Name="_P2" Content="2"   Margin="5,10,0,0"   Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
-            <Button x:Name="_P8" Content="8"  Margin="0,10,0,0"    Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
-            <Button x:Name="_P10" Content="10"  Margin="0,10,0,0"  Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
-            <Button x:Name="_P16" Content="16"  Margin="0,10,0,0"  Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
-        </WrapPanel>
-        <Button x:Name="_c" Content="CE"  Margin="0,10,85,10" Width="70" Height="30"  Background="#FF323232"  Foreground="#FFCBCBCB"  BorderBrush="{x:Null}" Click="Button_Click_FullClear"  FontFamily="Sitka Small" RenderTransformOrigin="0.643,0.667" Grid.Column="1" Grid.Row="3" />
-        <Button x:Name="_b" Content="⌫" Margin="80,10,5,10"  Width="70" Height="30" Background="#FF323232"  Foreground="#FFCBCBCB"  BorderBrush="{x:Null}" Click="Button_Del_Char"  FontSize="16" FontFamily="Sitka Small"  VerticalContentAlignment="Bottom" Grid.Column="1" Grid.Row="3"/>
-        <WrapPanel x:Name="standartNum" HorizontalAlignment="Left" Height="305" Grid.Row="4" Grid.RowSpan="4" VerticalAlignment="Top" Width="250">
-            <Button x:Name="_7" Content="7"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
-            <Button x:Name="_8" Content="8"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
-            <Button x:Name="_9" Content="9"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
-            <Button x:Name="_4" Content="4"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
-            <Button x:Name="_5" Content="5"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_6" Content="6"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
-            <Button x:Name="_1" Content="1"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
-            <Button x:Name="_2" Content="2"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  />
-            <Button x:Name="_3" Content="3"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
-            <Button x:Name="_0" Content="0"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  />
-            <Button x:Name="_q" Content="+/-" Margin="5,5,0,0"  Width="75" Height="69" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_q_Click" />
-            <Button x:Name="_z" Content=","   Margin="5,5,0,0"  Width="75" Height="69" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_z_Click" />
-        </WrapPanel>
-        <WrapPanel x:Name="SimpleMathOp" HorizontalAlignment="Left" Height="150" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" Width="150" Grid.Column="1" Visibility="Visible">
-            <Button x:Name="_p" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_m" Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_y" Content="*" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_d" Content="/" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_s" Content="^" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_k" Content="√" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_sko11" Content="(" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_skc12" Content=")" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"  Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-        </WrapPanel>
-        <WrapPanel x:Name="IngeneerMathOp" HorizontalAlignment="Left" Height="151" Grid.Row="5" Grid.RowSpan="3" VerticalAlignment="Top" Width="150" Grid.Column="1" Visibility="Collapsed" Margin="0,25,0,0">
-            <Button x:Name="_mod" Content="|x|" Grid.Column="2" HorizontalAlignment="Left" Margin="100,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Modul_Click"/>
-            <Button x:Name="_sin" Content="sin" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
-            <Button x:Name="_cos" Content="cos" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
-            <Button x:Name="_tan" Content="tg" Grid.Column="1" HorizontalAlignment="Left"  Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
-            <Button x:Name="_ctg" Content="ctg" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
-            <Button x:Name="_log" Content="log" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-            <Button x:Name="_lnn" Content="ln" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"    Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
-        </WrapPanel>
-        <WrapPanel x:Name="ProgrammerMathOp" HorizontalAlignment="Left" Height="151" Grid.Row="5" Grid.RowSpan="3" VerticalAlignment="Top" Width="150" Grid.Column="1" Visibility="Collapsed" Margin="0,25,0,0">
-            <Button x:Name="_10" Content="A" Grid.Column="1" HorizontalAlignment="Left" Margin="100,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
-            <Button x:Name="_11" Content="B" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
-            <Button x:Name="_12" Content="C" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
-            <Button x:Name="_13" Content="D" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"   Click="Butt_Click"/>
-            <Button x:Name="_14" Content="E" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
-            <Button x:Name="_15" Content="F" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
-        </WrapPanel>
-        <StackPanel x:Name="sp"  HorizontalAlignment="Left" Height="575" VerticalAlignment="Top" Width="0"  Background="#FF151515" Grid.Row="1" Grid.RowSpan="7">
-            <Button Content="Обычный" Height="40" Margin="0,50,0,0" BorderBrush="{x:Null}" Background="#FF212121" Foreground="#FFCBCBCB" FontFamily="Sitka Small" Click="ShowJustCal"/>
-            <Button Content="Инженерный" Height="40" BorderBrush="{x:Null}" Background="#FF212121" Foreground="#FFCBCBCB" FontFamily="Sitka Small" Click="ShowIngCal"/>
-            <Button Content="Програмиста" Height="40" BorderBrush="{x:Null}" Background="#FF212121" Foreground="#FFCBCBCB" FontFamily="Sitka Small" Click="ShowProgCal"/>
-        </StackPanel>
-        <Label x:Name="titleCal" Content="Обычный" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="160" Grid.ColumnSpan="3" Grid.Row="1" Height="50" Foreground="#FFCBCBCB" VerticalContentAlignment="Center" FontFamily="Sitka Small" FontSize="14"/>
-        <Button Content="≡" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="50" Height="50" BorderBrush="{x:Null}" Click="ShowCloseMenu" Background="{x:Null}" Foreground="#FFCBCBC7" FontSize="36" HorizontalContentAlignment="Center" FontFamily="Sitka Small" VerticalContentAlignment="Bottom"/>
+
+
+        <Button Content="Обычный" 
+                Grid.Row="1"
+                Height="40" 
+                Width="100"
+                HorizontalAlignment="Left"
+                BorderBrush="{x:Null}" 
+                Background="#FF212121" 
+                Foreground="#FFCBCBCB" 
+                FontFamily="Sitka Small" 
+                Click="ShowJustCal"/>
+
+
+        <Button Content="Инженерный" 
+                Width="100"
+                Height="40" 
+                HorizontalAlignment="Left"
+                Grid.Row="1"
+                Margin="100,0,0,0"
+                BorderBrush="{x:Null}" 
+                Background="#FF212121" 
+                Foreground="#FFCBCBCB" 
+                FontFamily="Sitka Small" 
+                Click="ShowIngCal"/>
+        
+        <Button Content="Програмиста" 
+                Height="40" 
+                Width="100"
+                Margin="200,0,0,0"
+                Grid.Row="1"
+                HorizontalAlignment="Left"
+                BorderBrush="{x:Null}" 
+                Background="#FF212121" 
+                Foreground="#FFCBCBCB" 
+                FontFamily="Sitka Small" 
+                Click="ShowProgCal"/>
+
+
+
+
+        <Label x:Name="titleCal" 
+               Content="Обычный" 
+               HorizontalAlignment="Left"  
+               VerticalAlignment="Top" 
+               Width="160" 
+               Height="25" 
+               Foreground="#FFCBCBCB" 
+               VerticalContentAlignment="Center" 
+               FontFamily="Sitka Small" FontSize="14"/>
+
+
+        <Grid Grid.Row="2">
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBox x:Name="label10" 
+                     Text="0" Foreground="White" 
+                     Background="#FF171717" 
+                     KeyDown="label10_KeyDown"
+                     HorizontalContentAlignment="Right" 
+                     FontSize="16" 
+                     VerticalAlignment="Top"
+                     Height="30"
+                     VerticalContentAlignment="Bottom" 
+                     Margin="0,0,0,0" 
+              />
+        
+
+            <TextBox x:Name="label2" 
+                     Text="0" Foreground="White" 
+                     Background="#FF171717" 
+                     HorizontalContentAlignment="Right" 
+                     FontSize="16" 
+                     VerticalAlignment="Top"
+                     Height="30"
+                     VerticalContentAlignment="Bottom" 
+                     Margin="0,60,0,0" 
+              />
+          
+
+
+            <TextBox x:Name="label8" 
+                     Text="0" Foreground="White" 
+                     Background="#FF171717" 
+                     HorizontalContentAlignment="Right" 
+                     FontSize="16" 
+                     VerticalAlignment="Top"
+                     Height="30"
+                     VerticalContentAlignment="Bottom" 
+                     Margin="0,30,0,0" 
+              />
+        
+
+            <TextBox x:Name="label16" 
+                     Text="0" Foreground="White" 
+                     Background="#FF171717" 
+                     HorizontalContentAlignment="Right" 
+                     FontSize="16" 
+                     VerticalAlignment="Top"
+                     Height="30"
+                     VerticalContentAlignment="Bottom" 
+                     Margin="0,90,0,0"
+                     
+              />
+
+           
+
+            <Grid x:Name="GridInfo" Grid.Column="1">
+
+
+                <Label  x:Name="LabelOCT" Content="OCT" 
+                   HorizontalAlignment="Right" 
+                   Foreground="White"
+                   Margin="0,30,0,0" 
+                        FontSize="10"
+                   VerticalAlignment="Top" 
+                   />
+
+                <Label x:Name="LabelBIN" Content="BIN" 
+                   HorizontalAlignment="Right" 
+                   Foreground="White"
+                        FontSize="10"
+                    Margin="0,60,0,0" 
+                   VerticalAlignment="Top"
+                  
+                   />
+                <Label x:Name="LabelDEC" Content="DEC" 
+                   HorizontalAlignment="Right" 
+                   Foreground="White"
+                        FontSize="10"
+                   Margin="0,0,0,0" 
+                   VerticalAlignment="Top" 
+                   />
+
+                <Label x:Name="LabelHEX" Content="HEX" 
+                   HorizontalAlignment="Right" 
+                   Foreground="White"
+                        FontSize="10"
+                   Margin="0,90,0,0" 
+                   VerticalAlignment="Top" 
+                 />
+            </Grid>
+
+
+
+
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <WrapPanel x:Name="MathTools" HorizontalAlignment="Left" Height="50" Grid.Row="3" VerticalAlignment="Top" Width="250" Visibility="Visible">
+                <Button x:Name="_e" Content="e"   Margin="5,10,0,0"  Width="70" Height="30" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
+                <Button x:Name="_pi" Content="π"  Margin="0,10,0,0"   Width="70" Height="30" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
+                <Button x:Name="_fack" Content="!"  Margin="0,10,0,0"  Width="70" Height="30" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+            </WrapPanel>
+
+            <WrapPanel x:Name="ProgramerTools" HorizontalAlignment="Left" Height="50" Grid.Row="3" VerticalAlignment="Top" Width="250" Visibility="Collapsed">
+                <Button x:Name="_P2" Content="2"   Margin="5,10,0,0"   Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
+                <Button x:Name="_P8" Content="8"  Margin="0,10,0,0"    Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
+                <Button x:Name="_P10" Content="10"  Margin="0,10,0,0"  Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
+                <Button x:Name="_P16" Content="16"  Margin="0,10,0,0"  Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
+            </WrapPanel>
+
+
+            <Button x:Name="_c" 
+                    Content="CE"  
+                    HorizontalAlignment="Left" 
+                    Width="70" Height="30"  
+                    Background="#FF323232"  
+                    Foreground="#FFCBCBCB"  
+                    BorderBrush="{x:Null}" 
+                    Click="Button_Click_FullClear"  
+                    FontFamily="Sitka Small" 
+                    Grid.Column="1" Grid.Row="3" />
+            <Button x:Name="_b" 
+                    Content="⌫" 
+                    HorizontalAlignment="Left"
+                    Margin="70,0,0,0"
+                    Width="70" Height="30" 
+                    Background="#FF323232" 
+                    Foreground="#FFCBCBCB"  
+                    BorderBrush="{x:Null}" 
+                    Click="Button_Del_Char"  
+                    FontSize="16" FontFamily="Sitka Small"  
+                    VerticalContentAlignment="Bottom" 
+                    Grid.Column="1" Grid.Row="3"/>
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Button x:Name="_r" 
+                        Content="=" 
+                        Grid.Column="1" 
+                        HorizontalAlignment="Left" 
+                        Grid.Row="1" 
+                        VerticalAlignment="Top" 
+                        Width="150" Height="45" 
+                        FontSize="24"  
+                        Background="#FF323232" 
+                        Foreground="#FFCBCBCB" 
+                        BorderBrush="{x:Null}"  
+                        Click="Button_Click_StartOperation"/>
+            </Grid>
+
+            <WrapPanel x:Name="standartNum" HorizontalAlignment="Left" Height="305" Grid.Row="4" Grid.RowSpan="4" VerticalAlignment="Top" Width="250">
+                <Button x:Name="_7" Content="7"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
+                <Button x:Name="_8" Content="8"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
+                <Button x:Name="_9" Content="9"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
+                <Button x:Name="_4" Content="4"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
+                <Button x:Name="_5" Content="5"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_6" Content="6"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
+                <Button x:Name="_1" Content="1"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
+                <Button x:Name="_2" Content="2"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  />
+                <Button x:Name="_3" Content="3"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click" />
+                <Button x:Name="_0" Content="0"   Margin="5,5,0,0"  Width="75" Height="69" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  />
+                <Button x:Name="_q" Content="+/-" Margin="5,5,0,0"  Width="75" Height="69" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_q_Click" />
+                <Button x:Name="_z" Content=","   Margin="5,5,0,0"  Width="75" Height="69" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_z_Click" />
+            </WrapPanel>
+
+            <WrapPanel x:Name="SimpleMathOp" HorizontalAlignment="Left" Height="150" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" Width="150" Grid.Column="1" Visibility="Visible">
+                <Button x:Name="_p" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_m" Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_y" Content="*" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_d" Content="/" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_s" Content="^" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_k" Content="√" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"      Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_sko11" Content="(" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"  Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_skc12" Content=")" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"  Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+            </WrapPanel>
+
+            <WrapPanel x:Name="IngeneerMathOp" HorizontalAlignment="Left"  Grid.Row="5" Grid.RowSpan="3" VerticalAlignment="Top" Width="150" Grid.Column="1" Visibility="Collapsed" Margin="0,100,0,0">
+                <Button x:Name="_mod" Content="|x|" Grid.Column="2" HorizontalAlignment="Left" Margin="100,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Modul_Click"/>
+                <Button x:Name="_sin" Content="sin" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
+                <Button x:Name="_cos" Content="cos" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
+                <Button x:Name="_tan" Content="tg" Grid.Column="1" HorizontalAlignment="Left"  Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
+                <Button x:Name="_ctg" Content="ctg" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"  FontFamily="Sitka Small"/>
+                <Button x:Name="_log" Content="log" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+                <Button x:Name="_lnn" Content="ln" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"    Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
+            </WrapPanel>
+            <WrapPanel x:Name="ProgrammerMathOp" HorizontalAlignment="Left"  Grid.Row="6" Grid.RowSpan="3" VerticalAlignment="Top" Width="150" Grid.Column="1" Visibility="Collapsed" Margin="0,100,0,0">
+                <Button x:Name="_10" Content="A" Grid.Column="1" HorizontalAlignment="Left" Margin="100,0,0,0"   Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
+                <Button x:Name="_11" Content="B" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
+                <Button x:Name="_12" Content="C" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
+                <Button x:Name="_13" Content="D" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"   Click="Butt_Click"/>
+                <Button x:Name="_14" Content="E" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
+                <Button x:Name="_15" Content="F" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0"     Width="50" Height="50" FontSize="24"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}"  Click="Butt_Click"/>
+            </WrapPanel>
+        </Grid>
     </Grid>
 </Window>
