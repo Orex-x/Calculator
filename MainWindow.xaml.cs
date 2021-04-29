@@ -20,6 +20,8 @@ namespace Cal
         string[] arrayNum = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ",", "A", "B", "C", "D", "E", "F" };
         string[] arrayOperathions = { "+", "-", "*", "/", "^", "√", ")", "(", "!" };
         static string[] arrayTrigon = { "sin", "cos", "tg(", "ctg", "ln(", "log", "|x|" };
+        bool zap = true;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,25 +40,103 @@ namespace Cal
         private void Button_Del_Char(object sender, RoutedEventArgs e)
         {
             try { primer = primer.Remove(primer.Length - 1, 1); } catch (Exception) { }
-            label10.Text = primer;
+            label10.Content = primer;
+            if (label10.Content.ToString().Length > 0)
+            {
+
+                try
+                {
+                    long i = Convert.ToInt64(label10.Content);
+                    label2.Content = Convert.ToString(i, 2);
+                    label8.Content = Convert.ToString(i, 8);
+                    label10.Content = Convert.ToString(i, 10);
+                    label16.Content = Convert.ToString(i, 16);
+                }
+                catch (Exception ee) { }
+            }
+            else
+            {
+                label2.Content = "";
+                label8.Content = "";
+                label10.Content = "";
+                label16.Content = "";
+
+            }
         }
         private void Button_Click_FullClear(object sender, RoutedEventArgs e)
         {
             primer = "";
-            label10.Text = primer;
+            label10.Content = primer;
+            label2.Content = "";
+            label8.Content = "";
+            label10.Content = "";
+            label16.Content = "";
         }
         //Нажата кнопка 
         private void Butt_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
+
+            /*   string s = label10.Content.ToString();
+               s = s.Substring(s.Length - 1, s.Length);
+
+               if (!arrayOperathions.Any(str2 => str2 == s))
+               {
+                   primer += b.Content;
+                   label10.Content = primer;
+               }
+   */
+
+            if (arrayOperathions.Any(str2 => str2 == b.Content.ToString()))
+            {
+                zap = true;
+            }
+
+            if (b.Content.ToString() == "-")
+            {
+                primer += "0";
+            }
+
+           
+
+
+
             primer += b.Content;
-            label10.Text = primer;
+            label10.Content = primer;
+
+            if (label10.Content.ToString().Length > 0)
+            {
+               
+                try
+                {
+                    long i = Convert.ToInt64(label10.Content);
+                    label2.Content = Convert.ToString(i, 2);
+                    label8.Content = Convert.ToString(i, 8);
+                    label10.Content = Convert.ToString(i, 10);
+                    label16.Content = Convert.ToString(i, 16);
+                }
+                catch (Exception ee) { }
+            }
+
 
         }
         private void Button_Click_StartOperation(object sender, RoutedEventArgs e)
         {
             primer = Reshenie(primer);
-            label10.Text = primer;
+            label10.Content = primer;
+            if (label10.Content.ToString().Length > 0)
+            {
+                try
+                {
+                    long i = Convert.ToInt64(label10.Content);
+                    label2.Content = Convert.ToString(i, 2);
+                    label8.Content = Convert.ToString(i, 8);
+                    label10.Content = Convert.ToString(i, 10);
+                    label16.Content = Convert.ToString(i, 16);
+                }
+                catch (Exception ee) { }
+            }
+
         }
 
 
@@ -233,7 +313,11 @@ namespace Cal
                         break;
                     case "!":
                         int fuck = Convert.ToInt32(x);
-                        return Factorial(fuck);
+                        if (fuck > 0)
+                        {
+                            return Factorial(fuck);
+                        }
+                        else return 0;
                         break;
                     case "ln(":
                         return Math.Log(x);
@@ -291,7 +375,7 @@ namespace Cal
 
             IngeneerMathOp.Visibility = Visibility.Collapsed;
             ProgrammerMathOp.Visibility = Visibility.Collapsed;
-            ProgramerTools.Visibility = Visibility.Collapsed;
+           // ProgramerTools.Visibility = Visibility.Collapsed;
             MathTools.Visibility = Visibility.Visible;
             titleCal.Content = "Обычный";
            // ShowCloseMenu(null, null);
@@ -309,7 +393,7 @@ namespace Cal
 
             IngeneerMathOp.Visibility = Visibility.Visible;
             ProgrammerMathOp.Visibility = Visibility.Collapsed;
-            ProgramerTools.Visibility = Visibility.Collapsed;
+          //  ProgramerTools.Visibility = Visibility.Collapsed;
             MathTools.Visibility = Visibility.Visible;
             titleCal.Content = "Инженерный";
            // ShowCloseMenu(null, null);
@@ -327,7 +411,7 @@ namespace Cal
 
             IngeneerMathOp.Visibility = Visibility.Collapsed;
             ProgrammerMathOp.Visibility = Visibility.Visible;
-            ProgramerTools.Visibility = Visibility.Visible;
+          //  ProgramerTools.Visibility = Visibility.Visible;
             MathTools.Visibility = Visibility.Collapsed;
             titleCal.Content = "Програмист";
            // ShowCloseMenu(null, null);
@@ -336,19 +420,26 @@ namespace Cal
         {
             primer = Reshenie(primer);
             if (primer.Length > 0 && primer[0] == '-') primer = primer.Remove(0, 1);
-            label10.Text = primer;
+            label10.Content = primer;
         }
         private void _q_Click(object sender, RoutedEventArgs e)
         {
             if (primer.Length > 0 && primer[0] == '-') primer = primer.Remove(0, 1); else primer = "-" + primer;
-            label10.Text = primer;
+            label10.Content = primer;
         }
+
+
         private void _z_Click(object sender, RoutedEventArgs e)
         {
-            if (!checkZ(primer))
+
+            if (zap)
                 if (primer.Length > 0) primer += ","; else primer = "0,";
-            label10.Text = primer;
+            label10.Content = primer;
+         
+                zap = false;
+            
         }
+
         private bool checkZ(string str)
         {
             for (int i = 0; i < str.Length; i++)
@@ -359,7 +450,7 @@ namespace Cal
         private void _Programer_Button_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
-            label10.Text = Convert.ToString(Convert.ToInt32(Reshenie(primer)), Convert.ToInt32(b.Content));
+            label10.Content = Convert.ToString(Convert.ToInt32(Reshenie(primer)), Convert.ToInt32(b.Content));
         }
         private string getDes(string shestnadzat)
         {
@@ -369,38 +460,7 @@ namespace Cal
             return itog.ToString();
         }
 
-        private void label10_KeyDown(object sender, KeyEventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            switch (tb.Name)
-            {
-                case "label10":
-                    {
-                        int i = Convert.ToInt32(tb.Text);
-                        label2.Text = Convert.ToString(i, 2);
-                        label8.Text = Convert.ToString(i, 8);
-                        label10.Text = Convert.ToString(i, 10);
-                        label16.Text = Convert.ToString(i, 16);
-                    }
-                    break;
-                case "label2":
-                    {
-
-                        break;
-                    }
-                case "label8":
-                    {
-
-                        break;
-                    }
-                case "label16":
-                    {
-
-                        break;
-                    }
-            }
-        }
-
+       
           
     }
 }

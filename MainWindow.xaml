@@ -100,10 +100,10 @@
                 <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             
-            <TextBox x:Name="label10" 
-                     Text="0" Foreground="White" 
+            <Label x:Name="label10" 
+                     Content="0" Foreground="White" 
                      Background="#FF171717" 
-                     KeyDown="label10_KeyDown"
+                    
                      HorizontalContentAlignment="Right" 
                      FontSize="16" 
                      VerticalAlignment="Top"
@@ -111,10 +111,10 @@
                      VerticalContentAlignment="Bottom" 
                      Margin="0,0,0,0" 
               />
-        
 
-            <TextBox x:Name="label2" 
-                     Text="0" Foreground="White" 
+
+            <Label   x:Name="label2" 
+                     Content="0" Foreground="White" 
                      Background="#FF171717" 
                      HorizontalContentAlignment="Right" 
                      FontSize="16" 
@@ -126,8 +126,8 @@
           
 
 
-            <TextBox x:Name="label8" 
-                     Text="0" Foreground="White" 
+            <Label x:Name="label8" 
+                     Content="0" Foreground="White" 
                      Background="#FF171717" 
                      HorizontalContentAlignment="Right" 
                      FontSize="16" 
@@ -138,8 +138,8 @@
               />
         
 
-            <TextBox x:Name="label16" 
-                     Text="0" Foreground="White" 
+            <Label x:Name="label16" 
+                     Content="0" Foreground="White" 
                      Background="#FF171717" 
                      HorizontalContentAlignment="Right" 
                      FontSize="16" 
@@ -204,12 +204,14 @@
                 <Button x:Name="_fack" Content="!"  Margin="0,10,0,0"  Width="70" Height="30" FontSize="20"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="Butt_Click"/>
             </WrapPanel>
 
+            <!--
             <WrapPanel x:Name="ProgramerTools" HorizontalAlignment="Left" Height="50" Grid.Row="3" VerticalAlignment="Top" Width="250" Visibility="Collapsed">
                 <Button x:Name="_P2" Content="2"   Margin="5,10,0,0"   Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
                 <Button x:Name="_P8" Content="8"  Margin="0,10,0,0"    Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
                 <Button x:Name="_P10" Content="10"  Margin="0,10,0,0"  Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
                 <Button x:Name="_P16" Content="16"  Margin="0,10,0,0"  Width="60" Height="30" FontSize="15"  Background="#FF323232" Foreground="#FFCBCBCB" BorderBrush="{x:Null}" Click="_Programer_Button_Click"/>
             </WrapPanel>
+            -->
 
 
             <Button x:Name="_c" 
